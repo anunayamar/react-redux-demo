@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 const DisplayUsers = () => {
   const users = useSelector((state) => state.users);
 
+  console.log(`In display users ${users}`);
   return (
     <React.Fragment>
       {users.map((user) => (

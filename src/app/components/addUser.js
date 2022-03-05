@@ -28,8 +28,10 @@ const AddUser = () => {
   };
   console.log(`${firstName} ${lastName} ${age}`);
   return (
-    <>
-      Add User Screen
+    <center style={{ margin: "20px" }}>
+      <label style={{ margin: "20px", "font-weight": "bold" }}>
+        Add User Screen
+      </label>
       <div>
         First Name:{" "}
         <input
@@ -68,7 +70,7 @@ const AddUser = () => {
           <DisplayUsers />
         </div>
       )}
-    </>
+    </center>
   );
 };
 
