@@ -1,21 +1,16 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { ADD_USER } from "../actions";
-import DisplayUsers from "./displayUsers";
+import { saveUser } from "../action-creators/userActionCreator";
 
 const AddUser = () => {
   const [user, setUser] = useState({ firstName: "", lastName: "", age: 0 });
-  const [showAllUsers, setShowAllUsers] = useState(false);
   const { firstName, lastName, age } = user;
 
   const dispatch = useDispatch();
 
   const handleAddUser = () => {
     console.log(`adding ${firstName} ${lastName} ${age}`);
-    dispatch({
-      type: ADD_USER,
-      payload: user,
-    });
+    dispatch(saveUser({ firstName, lastName, age }));
   };
 
   const handleChange = (update) => {
@@ -59,17 +54,6 @@ const AddUser = () => {
       <div>
         <button onClick={handleAddUser}>Add User</button>
       </div>
-      <div>
-        <button onClick={() => setShowAllUsers((prev) => !prev)}>
-          Toggle All Users Display
-        </button>
-      </div>
-      {showAllUsers && (
-        <div>
-          <div>All Users</div>
-          <DisplayUsers />
-        </div>
-      )}
     </center>
   );
 };
