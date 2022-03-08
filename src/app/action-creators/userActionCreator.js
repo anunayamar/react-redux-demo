@@ -6,7 +6,7 @@ import {
   SAVE_USER_FAILURE,
   SAVE_USER_SUCCESS,
 } from "../actions";
-import { checkStatus, parseJSON } from "../utils/fetchHelpers";
+import { checkStatusAndError, parseJSON } from "../utils/fetchAPIUtils";
 
 export function saveUser(user) {
   return function saveUserThunk(dispatch, getState) {
@@ -22,7 +22,7 @@ export function saveUser(user) {
 
     dispatch({ type: SAVE_USER });
     fetch(apiUrl, options)
-      .then(checkStatus)
+      .then(checkStatusAndError)
       .then(parseJSON)
       .then((data) => dispatch({ type: SAVE_USER_SUCCESS, payload: data }))
       .catch((error) => {
